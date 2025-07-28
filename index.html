@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan Raka & Dina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fefaf6;
+      color: #333;
+    }
+    header {
+      background: url('https://source.unsplash.com/1600x600/?wedding') center/cover;
+      height: 60vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      margin: 0;
+    }
+    section {
+      padding: 2em;
+      max-width: 700px;
+      margin: auto;
+    }
+    .countdown {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 1em 0;
+      text-align: center;
+    }
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .photo-gallery img {
+      width: 30%;
+      border-radius: 8px;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>Raka & Dina</h1>
+    <p>Sabtu, 14 September 2025</p>
+  </header>
+
+  <section>
+    <h2>Assalamu’alaikum Warahmatullahi Wabarakatuh</h2>
+    <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami:</p>
+
+    <p><strong>Raka Prasetya</strong><br>dan<br><strong>Dina Lestari</strong></p>
+
+    <h3>Akad Nikah</h3>
+    <p>Sabtu, 14 September 2025<br>Jam 09.00 WIB</p>
+
+    <h3>Resepsi</h3>
+    <p>Sabtu, 14 September 2025<br>Jam 11.00 – 14.00 WIB</p>
+
+    <h3>Lokasi Acara</h3>
+    <p>Gedung Serbaguna Citra Indah, Jakarta</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen></iframe>
+
+    <div class="countdown" id="countdown">
+      Hitung mundur menuju hari bahagia...
+    </div>
+
+    <h3>Galeri</h3>
+    <div class="photo-gallery">
+      <img src="https://source.unsplash.com/300x300/?bride" />
+      <img src="https://source.unsplash.com/301x300/?groom" />
+      <img src="https://source.unsplash.com/302x300/?wedding" />
+    </div>
+  </section>
+
+  <footer>
+    <p>Terima kasih atas doa dan restunya 🌸</p>
+  </footer>
+
+  <script>
+    const targetDate = new Date("2025-09-14T09:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        countdown.innerHTML = "Selamat datang di hari bahagia kami!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }, 1000);
+  </script>
+</body>
+</html>
