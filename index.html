@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Raka & Dina</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Asep & Lina</title>
   <style>
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 0;
-      background: #fdfaf7;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f8e1f4, #f0f9ff);
       color: #333;
+      text-align: center;
     }
     header {
-      background: #eec;
-      padding: 2rem;
-      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 2px solid #ccc;
     }
     header h1 {
+      font-size: 2.5em;
       margin: 0;
-      font-size: 2.5rem;
+      color: #b91c1c;
     }
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
+    header h2 {
+      font-size: 1.2em;
+      font-weight: normal;
+      margin: 10px 0 0;
+      color: #555;
     }
     section {
-      padding: 1.5rem;
-      max-width: 600px;
-      margin: auto;
+      padding: 40px 20px;
+    }
+    .date-location {
+      font-size: 1.2em;
+      margin: 20px 0;
     }
     .countdown {
-      text-align: center;
+      margin-top: 20px;
+      font-size: 1.5em;
       font-weight: bold;
-      font-size: 1.3rem;
-      margin: 1rem 0;
+      color: #0d9488;
     }
     iframe {
-      width: 100%;
-      height: 250px;
       border: none;
-      border-radius: 8px;
-      margin-top: 1rem;
+      margin-top: 20px;
+      width: 90%;
+      max-width: 600px;
+      height: 300px;
+      border-radius: 12px;
     }
     footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 1.5rem;
-      background: #eee;
+      background: #111;
+      color: #eee;
+      padding: 15px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Raka & Dina</h1>
-    <p>Sabtu, 14 September 2025</p>
+    <h1>Asep & Lina</h1>
+    <h2>Dengan segala hormat, kami mengundang Anda hadir di pernikahan kami</h2>
   </header>
 
   <section>
-    <p style="text-align:center">Dengan memohon rahmat Allah SWT,<br>kami mengundang Bapak/Ibu/Saudara/i<br>ke acara pernikahan kami.</p>
+    <h2>Detail Acara</h2>
+    <p class="date-location">📅 20 Desember 2025<br>📍 Gedung Serbaguna Joglo</p>
 
-    <h3>🕊 Akad Nikah</h3>
-    <p>Sabtu, 14 September 2025<br>Pukul 09.00 WIB</p>
+    <h2>Hitung Mundur</h2>
+    <p class="countdown" id="countdown">Loading...</p>
 
-    <h3>🎉 Resepsi</h3>
-    <p>Sabtu, 14 September 2025<br>Pukul 11.00 – 14.00 WIB</p>
-
-    <h3>📍 Lokasi</h3>
-    <p>Gedung Serbaguna Citra Indah, Jakarta</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen></iframe>
-
-    <div class="countdown" id="countdown">Loading countdown...</div>
+    <h2>Lokasi</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.8591!2d112.6300!3d-7.1500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDknMDAuMCJTIDExMsKwMzcnNDguMCJF!5e0!3m2!1sid!2sid!4v0000000000">
+    </iframe>
   </section>
 
   <footer>
-    Terima kasih atas doa dan restunya 💐
+    <p>❤️ Dengan penuh cinta, Asep & Lina | Undangan Digital 2025</p>
   </footer>
 
   <script>
-    const countdown = document.getElementById("countdown");
-    const target = new Date("2025-09-14T09:00:00").getTime();
+    // Countdown Timer
+    const eventDate = new Date("Dec 20, 2025 09:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
 
     setInterval(() => {
       const now = new Date().getTime();
-      const diff = target - now;
+      const distance = eventDate - now;
 
-      if (diff <= 0) {
-        countdown.innerHTML = "Hari Bahagia Telah Tiba!";
+      if (distance < 0) {
+        countdownElement.innerHTML = "Acara sudah berlangsung 🎉";
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik lagi`;
+      countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
     }, 1000);
   </script>
 </body>
